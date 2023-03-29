@@ -30,6 +30,7 @@ const App = () => {
         </>
       ) : (
       <div className="login">
+        <h2>Notification App</h2>
         <input type="text" placeholder="username" onChange={(e)=>setUsername(e.target.value)}/>
         <button onClick={() => setUser(username)}>Login</button>
       </div>

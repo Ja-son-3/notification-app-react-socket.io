@@ -10,25 +10,23 @@ const Navbar = ({socket}) => {
 
 
   useEffect(()=>{
-    socket.on("getNotification", data=>{
+    socket.on("getText", data=>{
       setNotifications(prev=>[...prev, data])
     })
   },[socket])
 
-  console.log(notifications)
-
-  const displayNotification = ({senderName, type})=>{
+  const displayNotification = ({senderName, text})=>{
     let action
 
-    if (type===1){
-      action="liked"
-    } else if (type===2){
-      action="commented"
-    } else{
-      action = "shared"
-    }
+    // if (type===1){
+    //   action="liked"
+    // } else if (type===2){
+    //   action="commented"
+    // } else{
+    //   action = "shared"
+    // }
     return (
-      <span className="notification">{`${senderName} ${action} your post`}</span>
+      <span className="notification">{`${senderName}: ${text} `}</span>
     )
   }
 
@@ -39,7 +37,7 @@ const Navbar = ({socket}) => {
 
   return (
     <div className="navbar">
-        <span className="logo">notification app</span>
+        <span className="logo">Notification app</span>
         <div className="icons">
           <div className="icon" onClick={()=>setOpen(!open)}>
             <img src={Notification} className="iconImg" alt="" />
